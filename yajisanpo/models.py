@@ -1,12 +1,12 @@
 from django.db import models
 
-class StoreType(models.Model)
-    name = models.CharField(max_length=100,verbose_name="お店の種類")
+class Director(models.Model)
+    name = models.CharField(max_length=100,verbose_name="監督")
     def __str__(self):
         return self.name
 
-class Log(models.Model)
-    name = models.CharField(max_length=100,verbose_name="履歴")
+class Movie(models.Model)
+    name = models.CharField(max_length=100,verbose_name="タイトル")
     def __str__(self):
         return self.name
 
