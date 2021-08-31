@@ -1,4 +1,5 @@
 from django.db import models
+from django.utils import timezone
 
 class Director(models.Model)
     name = models.CharField(max_length=100,verbose_name="監督")
@@ -6,12 +7,14 @@ class Director(models.Model)
         return self.name
 
 class Movie(models.Model)
-    name = models.CharField(max_length=100,verbose_name="タイトル")
+    title = models.CharField(max_length=100,verbose_name="タイトル")
+    watch_date = models.DateField()
+    director = models.ForeignKey(Director, on_delete=models.CASCADE,verbose_name="監督",related_name='movie')
     def __str__(self):
-        return self.name
+        return self.title
 
-from django.contrib import admin
-from yajisanpo.models import StoreType
-from yajisanpo.models import Log
-
-admin.site.register(StoreType,Log)
+class Log(models.Model)
+    text = models.TextField()
+    movie = models.ForeignKey(Movie,on_delete=models.CASCADE,verbose_name="タイトル",related_name='log')
+    def __str__(self):
+        return self.text
