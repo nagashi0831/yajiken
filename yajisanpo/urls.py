@@ -1,5 +1,5 @@
 from django.urls import path, include
-from . import views
+from yajisanpo import views
 
 app_name = 'yajisanpo' #アプリ名
 urlpatterns = [
